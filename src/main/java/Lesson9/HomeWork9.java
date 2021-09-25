@@ -6,13 +6,18 @@ public class HomeWork9 {
 
         String[][] array = {
                 {"1", "2", "3", "4"},
-                {"1", "2", "3", "4"},
+                {"1", "2", "3", "D"},
                 {"1", "2", "3", "4"},
                 {"1", "2", "3", "4"},
         };
-
-        someArraysActions(array);
-
+        try {
+            someArraysActions(array);
+        } catch (MyArraySizeException | MyArrayDataException exceptions) {
+            exceptions.printStackTrace();
+        }
+        finally {
+            System.out.println("Программа завершила работу");
+        }
     }
 
     public static void someArraysActions(String[][] array) {
@@ -28,11 +33,6 @@ public class HomeWork9 {
                 if (array[j].length != 4) {
                     throw new MyArraySizeException("Массив не подходит по параметру: 4х4");
                 }
-            }
-        }
-
-        for (int i = 0; i < array.length; i++) {
-            for (int j = 0; j < array.length; j++) {
                 try {
                     sum += Integer.parseInt(array[i][j]);
                 } catch (NumberFormatException numEx) {
